@@ -7,11 +7,11 @@
 <br/>
 <p align="center">
   <img src="https://i.imgur.com/K5mNt37.jpg" alt="Logo" width="200">
-  <h3 align="center">Eruditus - CTF helper bot</h3>
+  <h3 align="center">ARESxBOT - CTF helper bot</h3>
 </p>
 
 ## About
-Eruditus is a Discord CTF helper bot built with Python, it was initially designed to be
+ARESxBOT is a Discord CTF helper bot built with Python, it was initially designed to be
 used internally within the CyberErudites CTF team in order to make team work as efficient
 as possible.  
 The bot implements a bunch of useful features and uses **Discord's Slash commands** to
@@ -41,7 +41,7 @@ As you already read this bot can interact with the CTF platforms, meaning that y
 - Automatically create team accounts on the platform (or use already existing ones)
 - And many more
 
-Currently, Eruditus supports these platforms:
+Currently, ARESxBOT supports these platforms:
 - CTFd
 - rCTF
 - ctfjs

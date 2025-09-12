@@ -63,7 +63,7 @@ from lib.util import (
 from msg_components.buttons.workon import WorkonButton
 
 
-class Eruditus(discord.Client):
+class ARESxBOT(discord.Client):
     def __init__(self) -> None:
         intents = discord.Intents.default()
         intents.members = True
@@ -1083,5 +1083,5 @@ class Eruditus(discord.Client):
 
 if __name__ == "__main__":
     logger = logging.getLogger("discord.eruditus")
-    client = Eruditus()
+    client = ARESxBOT()
     client.run(os.getenv("DISCORD_TOKEN"))
