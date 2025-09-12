@@ -45,10 +45,10 @@ COPY requirements.txt .
 RUN pip3 install -r requirements.txt && \
     rm -f requirements.txt
 
-COPY eruditus /eruditus
-COPY .git/refs/heads/master /eruditus/.revision
+COPY aresxbot /aresxbot
+COPY .git/refs/heads/master /aresxbot/.revision
 
-WORKDIR /eruditus
+WORKDIR /aresxbot
 
 RUN useradd -m user && \
     chown -R user:user .
@@ -62,14 +62,14 @@ USER user
 
 # Prevent caching the subsequent "git clone" layer.
 # https://github.com/moby/moby/issues/1996#issuecomment-1152463036
-ADD http://date.jsontest.com /etc/builddate
+# ADD http://date.jsontest.com /etc/builddate
 RUN git clone https://github.com/hfz1337/DiscordChatExporter ~/DiscordChatExporter
 
-ARG CHATLOGS_REPO=git@github.com:username/repo
+ARG CHATLOGS_REPO=git@github.com:ARESxCyber/aresx_chatlogs
 
 RUN chmod 0600 ~/.ssh/*
 RUN git clone --depth=1 $CHATLOGS_REPO ~/chatlogs
-RUN git config --global user.email "eruditus@localhost" && \
-    git config --global user.name "eruditus"
+RUN git config --global user.email "aresxcyber@gmail.com" && \
+    git config --global user.name "ARESxCyber"
 
-ENTRYPOINT ["python3", "-u", "eruditus.py"]
+ENTRYPOINT ["python3", "-u", "aresxbot.py"]
