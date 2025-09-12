@@ -1,4 +1,4 @@
-# Eruditus - CTF helper bot
+# ARESxBOT - CTF helper bot (by es3n1n + mirkhoff)
 <p align="center">
         <a href="https://discord.com/developers/docs/interactions/slash-commands"><img src="https://img.shields.io/badge/%2F-Discord%20Slash-blue" alt="Discord Slash Commands"></a>
         <a href="https://github.com/hfz1337/Eruditus/actions"><img src="https://img.shields.io/github/actions/workflow/status/hfz1337/Eruditus/pre-commit.yml?branch=master&logo=github" alt="GitHub Workflow Status"></a>
