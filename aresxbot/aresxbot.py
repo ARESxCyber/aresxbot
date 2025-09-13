@@ -184,7 +184,7 @@ class ARESxBOT(discord.Client):
         # Register commands.
         self.tree.add_command(Help())
         # TODO: self.tree.add_command(Ranking())
-        # TODO: self.tree.add_command(ImitateSbg())
+        self.tree.add_command(ImitateSbg())
         self.tree.add_command(CTFTime())
         self.tree.add_command(Report())
         self.tree.add_command(Request())
