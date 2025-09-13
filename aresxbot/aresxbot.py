@@ -183,11 +183,9 @@ class ARESxBOT(discord.Client):
     async def setup_hook(self) -> None:
         # Register commands.
         self.tree.add_command(Help())
-        self.tree.add_command(Syscalls())
-        self.tree.add_command(Revshell())
-        self.tree.add_command(Encoding())
+        # TODO: self.tree.add_command(Ranking())
+        # TODO: self.tree.add_command(ImitateSbg())
         self.tree.add_command(CTFTime())
-        self.tree.add_command(Cipher())
         self.tree.add_command(Report())
         self.tree.add_command(Request())
         self.tree.add_command(Search())
@@ -196,6 +194,10 @@ class ARESxBOT(discord.Client):
         self.tree.add_command(CTF(), guild=discord.Object(GUILD_ID))
         self.tree.add_command(Intro(), guild=discord.Object(GUILD_ID))
         self.tree.add_command(Export(), guild=discord.Object(GUILD_ID))
+        #self.tree.add_command(Cipher())
+        #self.tree.add_command(Syscalls())
+        #self.tree.add_command(Revshell())
+        #self.tree.add_command(Encoding())
 
         # Restore `workon` buttons.
         for challenge in MONGO[DBNAME][CHALLENGE_COLLECTION].find({"solved": False}):
@@ -1082,6 +1084,6 @@ class ARESxBOT(discord.Client):
 
 
 if __name__ == "__main__":
-    logger = logging.getLogger("discord.eruditus")
+    logger = logging.getLogger("discord.aresxbot")
     client = ARESxBOT()
     client.run(os.getenv("DISCORD_TOKEN"))

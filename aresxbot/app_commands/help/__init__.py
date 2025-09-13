@@ -20,8 +20,7 @@ class Help(app_commands.Command):
                 title="ARESxBOT - CTF helper bot",
                 url="https://github.com/ARESxCyber/aresxbot",
                 description=(
-                    "ARESxBOT is dedicated to CTF teams who communicate via Discord "
-                    "during CTF competitions.\n"
+                    "ARESxBOT is dedicated to ARESx CTF team"
                     "Currently supported platforms: "
                     f"{', '.join(p.__name__ for p in Platform if p)}.\n"
                     f"Current revision: [`{COMMIT_HASH:.8}`]"
