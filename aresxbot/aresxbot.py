@@ -26,6 +26,7 @@ from app_commands.revshell import Revshell
 from app_commands.search import Search
 from app_commands.syscalls import Syscalls
 from app_commands.takenote import TakeNote
+from app_commands.sbgimitate import SbgImitate
 from config import (
     CHALLENGE_COLLECTION,
     CTF_COLLECTION,
@@ -184,7 +185,7 @@ class ARESxBOT(discord.Client):
         # Register commands.
         self.tree.add_command(Help())
         # TODO: self.tree.add_command(Ranking())
-        self.tree.add_command(ImitateSbg())
+        self.tree.add_command(SbgImitate())
         self.tree.add_command(CTFTime())
         self.tree.add_command(Report())
         self.tree.add_command(Request())
