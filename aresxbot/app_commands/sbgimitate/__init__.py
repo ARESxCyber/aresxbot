@@ -5,6 +5,11 @@ from discord import app_commands
 from config import COMMIT_HASH, GUILD_ID
 from lib.platforms import Platform
 
+SUPER_BEETLE_GAMER = "1131022738480447572"
+
+# na svaku poruku sbg-a zelim da se sacuva u bazi -> Intent
+# zelim da imam bazu svih sbg-ovih poruka -> on /sbg_imitate -> retrieve all missing msgs, return random from db
+
 class SbgImitate(app_commands.Command):
     def __init__(self) -> None:
         super().__init__(
