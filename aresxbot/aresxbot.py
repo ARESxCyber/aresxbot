@@ -1,3 +1,12 @@
+# stuff to be done on this bot:
+# - make it more in control of admin and captain -> not everyone can use all the commands
+# - imitate_sbg
+# - ranking based on challenge points after ctf
+# - after the ctf finishes, if the ctf was not supported, you need to input the points by yourself
+# - /blood command which is the same as solve, but this time it adds double points
+# - check if threads lock down after the challenge is solved
+# - implement flag regex that deletes any flag posting in the ctf category
+
 import io
 import logging
 import os

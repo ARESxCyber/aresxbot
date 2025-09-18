@@ -28,7 +28,7 @@ from config import (
 from lib.platforms.abc import ChallengeFile, TeamScoreHistory
 
 T = TypeVar("T")
-_log = logging.getLogger("discord.eruditus.util")
+_log = logging.getLogger("discord.aresxbot.util")
 tld_extract = TLDExtract()
 
 # "The input looks more like a filename than a markup" warnings
