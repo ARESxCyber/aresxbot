@@ -67,8 +67,10 @@ from msg_components.buttons.workon import WorkonButton
 class ARESxBOT(discord.Client):
     def __init__(self) -> None:
         intents = discord.Intents.default()
+        intents.guilds = True
         intents.members = True
         intents.message_content = True
+        intents.guild_scheduled_events = True
         super().__init__(intents=intents)
 
         self.tree = discord.app_commands.CommandTree(self)
@@ -99,6 +101,9 @@ class ARESxBOT(discord.Client):
 
         # The bot is supposed to be part of a single guild.
         guild = self.get_guild(GUILD_ID)
+        if guild is None:
+            logger.warning("GUILD IS NOT FOUND !!!")
+            exit()
 
         # Create the role if it didn't exist.
         role = discord.utils.get(guild.roles, name=name)
@@ -195,10 +200,10 @@ class ARESxBOT(discord.Client):
         self.tree.add_command(CTF(), guild=discord.Object(GUILD_ID))
         self.tree.add_command(Intro(), guild=discord.Object(GUILD_ID))
         self.tree.add_command(Export(), guild=discord.Object(GUILD_ID))
-        #self.tree.add_command(Cipher())
-        #self.tree.add_command(Syscalls())
-        #self.tree.add_command(Revshell())
-        #self.tree.add_command(Encoding())
+        self.tree.add_command(Cipher())
+        self.tree.add_command(Syscalls())
+        self.tree.add_command(Revshell())
+        self.tree.add_command(Encoding())
 
         # Restore `workon` buttons.
         for challenge in MONGO[DBNAME][CHALLENGE_COLLECTION].find({"solved": False}):
@@ -314,6 +319,9 @@ class ARESxBOT(discord.Client):
     ) -> None:
         # The bot is supposed to be part of a single guild.
         guild = self.get_guild(GUILD_ID)
+        if guild is None:
+            logger.warning("GUILD IS NOT FOUND !!!")
+            exit()
 
         event_name = after.name
         # If an event started (status changes from scheduled to active).
@@ -396,6 +404,9 @@ class ARESxBOT(discord.Client):
 
         # The bot is supposed to be part of a single guild.
         guild = self.get_guild(GUILD_ID)
+        if guild is None:
+            logger.warning("GUILD IS NOT FOUND !!!")
+            exit()
 
         if config.REMINDER_CHANNEL is None:
             # Find a public channel where we can send our reminders.
@@ -470,6 +481,9 @@ class ARESxBOT(discord.Client):
 
         # The bot is supposed to be part of a single guild.
         guild = self.get_guild(GUILD_ID)
+        if guild is None:
+            logger.warning("GUILD IS NOT FOUND !!!")
+            exit()
 
         scheduled_events = {
             scheduled_event.name: scheduled_event.id
@@ -507,7 +521,8 @@ class ARESxBOT(discord.Client):
 
                     # Ignore event if start/end times are incorrect.
                     if event_end <= event_start:
-                        continue
+                        #continue
+                        event_end = event_start + timedelta(days=1)
 
                     # If the event starts in more than a week, then it's too soon to
                     # schedule it, we ignore it for now.
@@ -617,6 +632,9 @@ class ARESxBOT(discord.Client):
 
         # The bot is supposed to be part of a single guild.
         guild = self.get_guild(GUILD_ID)
+        if guild is None:
+            logger.warning("GUILD IS NOT FOUND !!!")
+            exit()
 
         for ctf in MONGO[DBNAME][CTF_COLLECTION].find(
             {"ended": False, "archived": False}
@@ -873,6 +891,9 @@ class ARESxBOT(discord.Client):
 
         # The bot is supposed to be part of a single guild.
         guild = self.get_guild(GUILD_ID)
+        if guild is None:
+            logger.warning("GUILD IS NOT FOUND !!!")
+            exit()
 
         for ctf in MONGO[DBNAME][CTF_COLLECTION].find({"ended": False}):
             await send_scoreboard(ctf, guild=guild)
@@ -998,6 +1019,9 @@ class ARESxBOT(discord.Client):
 
         # Find the channel.
         guild = self.get_guild(GUILD_ID)
+        if guild is None:
+            logger.warning("GUILD IS NOT FOUND !!!")
+            exit()
         channel = guild.get_channel(CTFTIME_LEADERBOARD_CHANNEL) if guild else None
         if not channel:
             logger.error(
